@@ -1,6 +1,3 @@
-
-
-// PHP code translated to Rust
 use rand::Rng;
 use serde_json::{json, Value};
 
