@@ -906,26 +906,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust_template"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "futures-util",
- "king",
- "rand",
- "rayon",
- "reqwest",
- "rustls 0.21.12",
- "rustls-pemfile",
- "serde",
- "serde_json",
- "sha2",
- "tokio",
- "tokio-rustls 0.23.4",
- "tokio-tungstenite",
-]
-
-[[package]]
 name = "rustc-demangle"
 version = "0.1.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1208,6 +1188,26 @@ dependencies = [
  "once_cell",
  "rustix",
  "windows-sys 0.59.0",
+]
+
+[[package]]
+name = "test"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "futures-util",
+ "king",
+ "rand",
+ "rayon",
+ "reqwest",
+ "rustls 0.21.12",
+ "rustls-pemfile",
+ "serde",
+ "serde_json",
+ "sha2",
+ "tokio",
+ "tokio-rustls 0.23.4",
+ "tokio-tungstenite",
 ]
 
 [[package]]

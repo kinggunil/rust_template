@@ -26,6 +26,9 @@ git push origin main
 - Rust를 위한 사전 구성된 프로젝트 구조
 - 개발을 빠르게 시작할 수 있도록 간소화된 설정
 
+## 도움
+- https://github.com/cargo-generate/cargo-generate
+
 ## 라이선스
 이 프로젝트는 MIT 라이선스로 라이선스가 부여되어 있습니다.
 

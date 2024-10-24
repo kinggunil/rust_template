@@ -1,7 +1,24 @@
+#![allow(unused_imports)]
 use rand::Rng;
 use serde_json::{json, Value};
+use serde::{Deserialize, Serialize}; // 이 줄을 추가하세요
+use king::*;
+use rayon::prelude::*;
+mod sum;
 
-fn main() {
+fn main(){
+    println!("Hello, world!");
+    template();
+
+
+
+}
+
+fn template(){
+    println!("Hello, world!");
+    let a=sum::sum(1,2);
+    println!("{}",a);
+
     let mut n = 0;
     let mut people: Vec<Value> = vec![];
     let mut rng = rand::thread_rng();
@@ -33,8 +50,34 @@ fn main() {
     //let binance_data_price = binance_data_json[0][1].as_f64().unwrap();
     println!("\n{}", binance_data_json[0][1].as_str().unwrap().parse::<f64>().unwrap()+999999.99);
 
+    // Binance Ticker API
+    let binance_ticker_data = ticker().unwrap();
+    let binance_ticker_data_json: Vec<StructTicker> = serde_json::from_str(&binance_ticker_data).unwrap();
+    println!("\n{:?}", binance_ticker_data_json[0]);
+    //symbol이 BTCUSDT인 price를 가져옵니다.
+    let mut i = 0;
+    while i < binance_ticker_data_json.len() {
+        if binance_ticker_data_json[i].symbol == "BTCUSDT" {
+            println!("{}", binance_ticker_data_json[i].price);
+            break;
+        }
+        i = i + 1;
+    }    
 }
+#[tokio::main]
+async fn ticker() -> Result<String, Box<dyn std::error::Error>> {
+    let client = reqwest::Client::builder()
+        .build()?;
 
+    let request = client.request(reqwest::Method::GET, "https://api.binance.com/api/v3/ticker/price");
+
+    let response = request.send().await?;
+    let body = response.text().await?;
+
+    //println!("{}", body);
+
+    Ok(body)
+}
 
 #[tokio::main]
 async fn binance() -> Result<String, Box<dyn std::error::Error>> {
@@ -49,4 +92,10 @@ async fn binance() -> Result<String, Box<dyn std::error::Error>> {
     println!("{}", body);
 
     Ok(body)
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct StructTicker {
+    symbol: String,
+    price: String,
 }
