@@ -8,6 +8,8 @@ use rand::Rng; // 랜덤 숫자를 생성하기 위한 라이브러리입니다.
 use rayon::prelude::*; // 병렬 처리를 위한 라이브러리입니다.
 use serde::{Deserialize, Serialize}; // 데이터의 직렬화와 역직렬화를 위한 라이브러리입니다.
 use serde_json::{json, Value}; // JSON 데이터를 다루기 위한 라이브러리입니다.
+use colored::*;
+
 
 // 'sum.rs' 파일에서 'sum' 모듈을 가져옵니다.
 mod sum;
@@ -20,6 +22,7 @@ fn main() {
 
     template();
     println!("GLOBAL_ABC {}", unsafe{GLOBAL_ABC});
+    println!("{}", "This text is red".red());
 }
 
 // 전역 변수를 정의합니다.
