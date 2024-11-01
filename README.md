@@ -16,6 +16,7 @@ cargo generate --git https://github.com/kinggunil/rust_template.git --name test
 
 프로젝트를 업데이트하고 변경 사항을 Git 저장소에 푸시하려면, 다음 명령어를 사용하세요:
 
+name = "{{crate_name}}"
 ```sh
 git add .
 git commit -m "update"
