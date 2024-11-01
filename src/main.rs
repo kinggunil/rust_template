@@ -17,15 +17,23 @@ fn main() {
     // 콘솔에 인사말을 출력합니다.
     println!("Hello, world!");
     // 'template' 함수를 호출합니다.
+
     template();
+    println!("GLOBAL_ABC {}", unsafe{GLOBAL_ABC});
 }
 
+// 전역 변수를 정의합니다.
+static mut GLOBAL_ABC: i64 = 0;
 // 대부분의 로직이 담긴 'template' 함수를 정의합니다.
 fn template() {
     // 'sum' 모듈의 'sum' 함수를 사용하여 두 숫자를 더합니다.
     let a = sum::sum(1, 2);
     println!("{}", a);
 
+    unsafe{
+        GLOBAL_ABC = 123;
+    }
+    println!("GLOBAL_ABC {}", unsafe{GLOBAL_ABC});        
     // JSON 데이터를 생성하고 다루는 예제입니다.
     let mut n = 0;
     let mut people: Vec<Value> = vec![]; // 사람들을 저장할 벡터를 생성합니다.
