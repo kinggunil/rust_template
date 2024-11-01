@@ -10,6 +10,13 @@ use rayon::prelude::*; // 병렬 처리를 위한 라이브러리입니다.
 use serde::{Deserialize, Serialize}; // 데이터의 직렬화와 역직렬화를 위한 라이브러리입니다.
 use serde_json::{json, Value}; // JSON 데이터를 다루기 위한 라이브러리입니다.
 
+// 티커 데이터를 저장하기 위한 구조체를 정의합니다.
+#[derive(Debug, Deserialize, Serialize)]
+struct StructTicker {
+    symbol: String, // 심볼 이름 (예: "BTCUSDT")
+    price: String,  // 해당 심볼의 가격
+}
+
 // 전역 변수를 정의합니다.
 static mut GLOBAL_ABC: i64 = 0;
 // 대부분의 로직이 담긴 'template' 함수를 정의합니다.
@@ -204,9 +211,4 @@ async fn binance() -> Result<String, Box<dyn std::error::Error>> {
     Ok(body)
 }
 
-// 티커 데이터를 저장하기 위한 구조체를 정의합니다.
-#[derive(Debug, Deserialize, Serialize)]
-struct StructTicker {
-    symbol: String, // 심볼 이름 (예: "BTCUSDT")
-    price: String,  // 해당 심볼의 가격
-}
+
